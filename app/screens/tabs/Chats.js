@@ -15,7 +15,7 @@ class Chats extends Component {
           <Text>Chats</Text>
         </Body>
         <Right>
-          <TouchableOpacity onPress={()=>this.props.nagivator.showModal('NewMessage')}>
+          <TouchableOpacity onPress={()=>this.props.navigator.showModal({screen: 'push.NewChat'})}>
             <Icon name="create" style={{color: '#4285f4', marginRight: 10}}/>
           </TouchableOpacity>
         </Right>
@@ -57,13 +57,14 @@ class Chats extends Component {
 const ChatsContainer = createContainer((props) => {
   const userId = MO.user()?MO.user()._id:null;
   const selector = {members: {$elemMatch: {_id: userId}}};
+  const options = {sort: {'lastMessage.createdAt': -1}}
 
   if(userId){
-    MO.subscribe('chatsSub', 'chats', selector);
+    MO.subscribe('chatsSub', 'chats', selector, options);
   }
 
   return {
-    chats: MO.collection('chats', 'chatsSub').find(selector)
+    chats: MO.collection('chats', 'chatsSub').find(selector, options)
   }
 }, Chats);
 

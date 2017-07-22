@@ -10,6 +10,9 @@ import SignIn from './push/SignIn';
 import PinVerification from './push/PinVerification';
 import NewContact from './push/NewContact';
 import Messages from './push/Messages';
+import NewChat from './push/NewChat';
+import NewGroup from './push/NewGroup';
+import NewGroupForm from './push/NewGroupForm';
 
 export function registerScreens(){
   //tabs
@@ -22,6 +25,9 @@ export function registerScreens(){
   Navigation.registerComponent('push.PinVerification', ()=> PinVerification);
   Navigation.registerComponent('push.NewContact', ()=> NewContact);
   Navigation.registerComponent('push.Messages', ()=> Messages);
+  Navigation.registerComponent('push.NewChat', ()=> NewChat);
+  Navigation.registerComponent('push.NewGroup', ()=> NewGroup);
+  Navigation.registerComponent('push.NewGroupForm', ()=> NewGroupForm);
 }
 
 export function startSingleScreenApp(){

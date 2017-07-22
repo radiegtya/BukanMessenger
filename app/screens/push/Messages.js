@@ -19,7 +19,7 @@ class Messages extends Component {
     return (
       <Header>
         <Left>
-          <TouchableOpacity onPress={()=>this.props.navigator.dismissModal()}>
+          <TouchableOpacity onPress={()=>this.props.navigator.dismissAllModals()}>
             <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
           </TouchableOpacity>
         </Left>
@@ -52,7 +52,8 @@ class Messages extends Component {
       $set: {
         lastMessage: {
           message: messages[0].text,
-          from: name
+          from: name,
+          createdAt: new Date()
         }
       }
     });
@@ -65,7 +66,7 @@ class Messages extends Component {
       <Container>
         {this._renderHeader()}
         <GiftedChat
-          messages={this.props.messages}
+          messages={messages}
           onSend={this.onSend}
           user={{
             _id: user._id,
@@ -80,11 +81,13 @@ class Messages extends Component {
 const MessagesContainer = createContainer((props)=>{
   const selector = {chatId: props.chatId};
   const options = {sort: {createdAt: -1}};
-  MO.subscribe('messagesSub', 'messages', selector, options);
+  MO.subscribe('messagesSub'+props.chatId, 'messages', selector, options);
+
+  const messages = MO.collection('messages', 'messagesSub'+props.chatId).find(selector, options);
 
   return {
     user: MO.user(),
-    messages: MO.collection('messages', 'messagesSub').find(selector, options).reverse()
+    messages: messages.length > 0 ? messages.reverse(): []
   }
 
 }, Messages);
