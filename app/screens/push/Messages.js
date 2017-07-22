@@ -19,7 +19,7 @@ class Messages extends Component {
     return (
       <Header>
         <Left>
-          <TouchableOpacity onPress={()=>this.props.navigator.dismissModal({animationType: 'fade'})}>
+          <TouchableOpacity onPress={()=>this.props.navigator.dismissModal()}>
             <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
           </TouchableOpacity>
         </Left>
@@ -33,17 +33,29 @@ class Messages extends Component {
 
   onSend(messages = []) {
     const {user, chatId} = this.props;
+    const name = user.profile.firstName + ' ' + user.profile.lastName;
 
+    //create new message by chatId
     Meteor.collection('messages').insert({
       text: messages[0].text,
       createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
       user: {
         _id: user._id,
-        name: user.profile.firstName + ' ' + user.profile.lastName,
+        name: name,
         avatar: 'https://facebook.github.io/react/img/logo_og.png',
       },
       chatId: chatId
-    })
+    });
+
+    //update lastMessage by chatId
+    Meteor.collection('chats').update(chatId, {
+      $set: {
+        lastMessage: {
+          message: messages[0].text,
+          from: name
+        }
+      }
+    });
   }
 
   render() {

@@ -15,7 +15,7 @@ class Chats extends Component {
           <Text>Chats</Text>
         </Body>
         <Right>
-          <TouchableOpacity onPress={()=>this.props.nagivator.push('NewMessage')}>
+          <TouchableOpacity onPress={()=>this.props.nagivator.showModal('NewMessage')}>
             <Icon name="create" style={{color: '#4285f4', marginRight: 10}}/>
           </TouchableOpacity>
         </Right>
