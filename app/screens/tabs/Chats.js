@@ -1,42 +1,83 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, {Component} from 'react';
+import {TouchableOpacity} from 'react-native';
+import {Container, Content, Header, Left, Body, Right, Text, Title, ListItem, List, Thumbnail, Item, Input, Icon} from 'native-base';
 import Meteor, {createContainer} from 'react-native-meteor';
+import {MO} from '../../MO';
+import Chat from '../../components/Chat';
 
 class Chats extends Component {
-  render() {
-    console.log(this.props.chats)
+
+  _renderHeader(){
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Chats
-        </Text>
-      </View>
-    );
+      <Header>
+        <Left/>
+        <Body>
+          <Text>Chats</Text>
+        </Body>
+        <Right>
+          <TouchableOpacity onPress={()=>this.props.nagivator.push('NewMessage')}>
+            <Icon name="create" style={{color: '#4285f4', marginRight: 10}}/>
+          </TouchableOpacity>
+        </Right>
+      </Header>
+    )
   }
+
+
+  render(){
+    return (
+      <Container>
+
+        {this._renderHeader()}
+
+        {/* === Content Start === */}
+        <Content>
+          {/* Search Bar */}
+          <Item rounded style={styles.searchBar}>
+            <Icon name="search" style={styles.searchText} />
+            <Input placeholder="Search for messages or users" style={styles.searchText} />
+          </Item>
+          {/* Search Bar End */}
+
+          {/* List */}
+          <List>
+            {this.props.chats.map((chat,i) => <Chat key={i} chat={chat}/>)}
+          </List>
+          {/* List End */}
+
+        </Content>
+        {/* === Content End === */}
+
+      </Container>
+    )
+  }
+
 }
 
-export default createContainer((props)=>{
-  Meteor.subscribe('chats');
+const ChatsContainer = createContainer((props) => {
+  const userId = MO.user()._id;
+  const selector = {members: {$elemMatch: {_id: userId}}};
+
+  if(userId){
+    MO.subscribe('chatsSub', 'chats', selector);
+  }
 
   return {
-    chats: Meteor.collection('chats').find({})
+    chats: MO.collection('chats', 'chatsSub').find(selector)
   }
 }, Chats);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+export default ChatsContainer;
+
+//NativeBase styling basic obj
+const styles = {
+  searchBar: {
+    backgroundColor: '#ededed',
+    marginLeft: 10,
     margin: 10,
+    height: 25
+  },
+  searchText: {
+    fontSize: 14,
   }
-});
+}

@@ -76,10 +76,13 @@ const ContactsContainer = createContainer((props) => {
   });
 
   //subscribe all contacts which is ownerId = currentLoggedIn user
-  MO.subscribe('contactsSub', 'contacts', {ownerId: MO.user()._id});
+  if(MO.user())
+    MO.subscribe('contactsSub', 'contacts', {ownerId: MO.user()._id});
 
   return {
-    contacts: MO.collection('contacts', 'contactsSub').find({}),
+    contacts: MO.collection('contacts', 'contactsSub').find({
+      'user.profile.firstName': {$regex: props.search, $options: 'i'}
+    }),
   }
 }, Contacts);
 
