@@ -7,9 +7,13 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"libphonenumber-js": "^0.4.23",
+		"native-base": "^2.3.0",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.46.4",
+		"react-native-country-code-telephone-input": "0.0.9",
 		"react-native-meteor": "^1.1.0",
+		"react-native-meteor-redux": "^2.2.0",
 		"react-native-navigation": "^1.1.142"
 	},
 	"devDependencies": {

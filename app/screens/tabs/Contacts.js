@@ -8,6 +8,7 @@ import {
 import Meteor, {createContainer} from 'react-native-meteor';
 
 class Contacts extends Component {
+  
   render() {
     console.log(this.props.contacts)
 
@@ -28,6 +29,7 @@ export default createContainer((props)=>{
   Meteor.subscribe('users');
 
   return {
+    user: Meteor.user(),
     contacts: Meteor.collection('users').find({})
   }
 }, Contacts);

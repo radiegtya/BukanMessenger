@@ -1,1 +1,1 @@
-import './app/Main'
+import './app/Main';
