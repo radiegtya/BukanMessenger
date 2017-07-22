@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
 import Meteor, {createContainer} from 'react-native-meteor';
 import {MO} from '../../MO';
+import {Container, Content, View, Header, Left, Body, Right, Text, Icon} from 'native-base';
+import {TouchableOpacity} from 'react-native';
 
 class Messages extends Component {
 
@@ -11,29 +13,25 @@ class Messages extends Component {
     this.onSend = this.onSend.bind(this);
   }
 
-  componentWillMount() {
-    this.setState({
-      messages: [
-        {
-          _id: 1,
-          text: 'Hello developer',
-          createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
-          user: {
-            _id: 2,
-            name: 'React Native',
-            avatar: 'https://facebook.github.io/react/img/logo_og.png',
-          },
-        },
-      ],
-    });
+  _renderHeader(){
+    const {chatName} = this.props;
+
+    return (
+      <Header>
+        <Left>
+          <TouchableOpacity onPress={()=>this.props.navigator.dismissModal({animationType: 'fade'})}>
+            <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
+          </TouchableOpacity>
+        </Left>
+        <Body>
+          <Text>{chatName}</Text>
+        </Body>
+        <Right/>
+      </Header>
+    )
   }
 
   onSend(messages = []) {
-    // this.setState((previousState) => {
-    //   return {
-    //     messages: GiftedChat.append(previousState.messages, messages),
-    //   };
-    // });
     const {user, chatId} = this.props;
 
     Meteor.collection('messages').insert({
@@ -52,19 +50,22 @@ class Messages extends Component {
     const {user, messages} = this.props;
 
     return (
-      <GiftedChat
-        messages={this.props.messages}
-        onSend={this.onSend}
-        user={{
-          _id: user._id,
-        }}
-      />
+      <Container>
+        {this._renderHeader()}
+        <GiftedChat
+          messages={this.props.messages}
+          onSend={this.onSend}
+          user={{
+            _id: user._id,
+          }}
+        />
+      </Container>
     );
   }
 
 }
 
-export default createContainer((props)=>{
+const MessagesContainer = createContainer((props)=>{
   const selector = {chatId: props.chatId};
   const options = {sort: {createdAt: -1}};
   MO.subscribe('messagesSub', 'messages', selector, options);
@@ -75,3 +76,9 @@ export default createContainer((props)=>{
   }
 
 }, Messages);
+
+MessagesContainer.navigatorStyle = {
+  navBarHidden: true
+};
+
+export default MessagesContainer;

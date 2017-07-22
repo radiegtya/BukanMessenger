@@ -41,7 +41,7 @@ class Chats extends Component {
 
           {/* List */}
           <List>
-            {this.props.chats.map((chat,i) => <Chat key={i} chat={chat}/>)}
+            {this.props.chats.map((chat,i) => <Chat key={i} chat={chat} {...this.props}/>)}
           </List>
           {/* List End */}
 
