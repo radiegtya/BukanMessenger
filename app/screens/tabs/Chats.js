@@ -55,7 +55,7 @@ class Chats extends Component {
 }
 
 const ChatsContainer = createContainer((props) => {
-  const userId = MO.user()._id;
+  const userId = MO.user()?MO.user()._id:null;
   const selector = {members: {$elemMatch: {_id: userId}}};
 
   if(userId){

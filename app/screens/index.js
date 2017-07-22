@@ -9,6 +9,7 @@ import Settings from './tabs/Settings';
 import SignIn from './push/SignIn';
 import PinVerification from './push/PinVerification';
 import NewContact from './push/NewContact';
+import Messages from './push/Messages';
 
 export function registerScreens(){
   //tabs
@@ -20,6 +21,7 @@ export function registerScreens(){
   Navigation.registerComponent('push.SignIn', ()=> SignIn);
   Navigation.registerComponent('push.PinVerification', ()=> PinVerification);
   Navigation.registerComponent('push.NewContact', ()=> NewContact);
+  Navigation.registerComponent('push.Messages', ()=> Messages);
 }
 
 export function startSingleScreenApp(){

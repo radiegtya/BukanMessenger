@@ -13,6 +13,7 @@
 		"react-native": "0.46.4",
 		"react-native-contacts": "^0.8.2",
 		"react-native-country-code-telephone-input": "0.0.9",
+		"react-native-gifted-chat": "^0.2.2",
 		"react-native-meteor": "^1.1.0",
 		"react-native-meteor-redux": "^2.2.0",
 		"react-native-navigation": "^1.1.142"

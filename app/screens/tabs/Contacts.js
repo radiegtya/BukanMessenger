@@ -42,7 +42,7 @@ class Contacts extends Component {
 
           {/* List */}
           <List>
-            {this.props.contacts.map((contact, key) => <Contact key={key} contact={contact} />)}
+            {this.props.contacts.map((contact, key) => <Contact key={key} contact={contact} {...this.props} />)}
           </List>
           {/* List End */}
 

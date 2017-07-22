@@ -7,17 +7,15 @@ import {MO} from '../MO';
 class Contact extends Component{
 
   handleNewChat(){
-    const {contact, user} = this.props;
+    const {contact, user, navigator} = this.props;
 
-    Meteor.collection('chats').insert({
-      name: '',
-      type: 'private',
-      members: [
-        contact.user, //assign contact user
-        user, //assign current loggedIn user
-      ],
-      lastMessage: ''
+    Meteor.call('chats.initPrivate', user, contact.user, (err, chatId)=>{
+      navigator.showModal({
+        screen: 'push.Messages',
+        passProps: {chatId: chatId}
+      });
     });
+
   }
 
   render(){
