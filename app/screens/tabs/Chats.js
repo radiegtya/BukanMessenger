@@ -35,7 +35,7 @@ class Chats extends Component {
           {/* Search Bar */}
           <Item rounded style={styles.searchBar}>
             <Icon name="search" style={styles.searchText} />
-            <Input placeholder="Search for messages or users" style={styles.searchText} />
+            <Input placeholder="Search for messages or users" style={styles.searchText} onChangeText={(text) => this.props.setState({search: text})}/>
           </Item>
           {/* Search Bar End */}
 
@@ -55,7 +55,7 @@ class Chats extends Component {
 }
 
 const ChatsContainer = createContainer((props) => {
-  const userId = MO.user()?MO.user()._id:null;
+  const userId = MO.user()? MO.user()._id: null;
   const selector = {members: {$elemMatch: {_id: userId}}};
   const options = {sort: {'lastMessage.createdAt': -1}}
 
@@ -64,11 +64,37 @@ const ChatsContainer = createContainer((props) => {
   }
 
   return {
-    chats: MO.collection('chats', 'chatsSub').find(selector, options)
+    chats: MO.collection('chats', 'chatsSub').find({
+      $or: [
+        {name: {$regex: props.search}},
+        {'lastMessage.message': {$regex: props.search}},
+      ]
+    }, options)
   }
 }, Chats);
 
-export default ChatsContainer;
+export default class ChatsStateHolder extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      search: ""
+    };
+  }
+
+  render(){
+    const {search} = this.state;
+
+    return (
+      <ChatsContainer
+        search={search}
+        setState={this.setState.bind(this)}
+        {...this.props}
+      />
+    )
+  }
+
+}
 
 //NativeBase styling basic obj
 const styles = {
