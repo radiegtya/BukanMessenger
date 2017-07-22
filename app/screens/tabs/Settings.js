@@ -8,7 +8,7 @@ import {startSingleScreenApp} from '../index';
 class Settings extends Component {
 
   _renderHeader(){
-    const {turnOnEdit, firstName, setState, handleDone} = this.props;
+    const {turnOnEdit, firstName, handleDone, handleTurnOnEdit, user} = this.props;
     const validationCondition = firstName != "";
 
     return (
@@ -20,7 +20,7 @@ class Settings extends Component {
         <Right>
           {!turnOnEdit?
             (
-              <TouchableOpacity onPress={()=>setState({turnOnEdit: true})}>
+              <TouchableOpacity onPress={()=>handleTurnOnEdit(user)}>
                 <Text style={{color: '#4285f4', marginRight: 10}}>Edit</Text>
               </TouchableOpacity>
             ):
@@ -64,10 +64,10 @@ class Settings extends Component {
                   <Body>
                     <Form>
                       <Item>
-                        <Input placeholder="First Name" value={user.profile.firstName} onChangeText={(text) => setState({firstName: text})}/>
+                        <Input placeholder="First Name" value={firstName} onChangeText={(text) => setState({firstName: text})}/>
                       </Item>
                       <Item>
-                        <Input placeholder="Last Name" value={user.profile.lastName} onChangeText={(text) => setState({lastName: text})}/>
+                        <Input placeholder="Last Name" value={lastName} onChangeText={(text) => setState({lastName: text})}/>
                       </Item>
                     </Form>
                   </Body>
@@ -150,14 +150,6 @@ const SettingsContainer = createContainer((props) => {
 
 export default class SettingsStateHolder extends Component {
 
-  static navigationOptions = ({navigation})=> {
-      return {
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="settings" style={{color:tintColor}}/>
-        ),
-      }
-  };
-
   constructor(){
     super();
     this.state = {
@@ -182,6 +174,14 @@ export default class SettingsStateHolder extends Component {
     }
   }
 
+  handleTurnOnEdit(user){
+    this.setState({
+      turnOnEdit: true,
+      firstName: user.profile.firstName,
+      lastName: user.profile.lastName
+    })
+  }
+
   handleSignOut(){
     AsyncStorage.removeItem('@AuthStore:isLoggedIn', ()=>{
       Meteor.logout();
@@ -197,6 +197,7 @@ export default class SettingsStateHolder extends Component {
         turnOnEdit={this.state.turnOnEdit}
         handleDone={this.handleDone.bind(this)}
         handleSignOut={this.handleSignOut.bind(this)}
+        handleTurnOnEdit={this.handleTurnOnEdit.bind(this)}
         setState={this.setState.bind(this)}
         {...this.props}
       />
