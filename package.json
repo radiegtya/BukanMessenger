@@ -8,6 +8,7 @@
 	},
 	"dependencies": {
 		"libphonenumber-js": "^0.4.23",
+		"moment": "^2.18.1",
 		"native-base": "^2.3.0",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.46.4",

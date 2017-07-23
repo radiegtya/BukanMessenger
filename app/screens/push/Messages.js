@@ -38,7 +38,7 @@ class Messages extends Component {
     //create new message by chatId
     Meteor.collection('messages').insert({
       text: messages[0].text,
-      createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
+      createdAt: new Date(),
       user: {
         _id: user._id,
         name: name,

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Text, ListItem, Left, Thumbnail, Body, Right} from 'native-base';
 import Meteor, {createContainer} from 'react-native-meteor';
+import moment from 'moment';
 import {MO} from '../MO';
 
 class Chat extends Component{
@@ -40,7 +41,7 @@ class Chat extends Component{
             <Text note>{chat.lastMessage.message}</Text>
           </Body>
           <Right>
-            <Text note>3:43 pm</Text>
+            <Text note>{moment(chat.lastMessage.date).format("hh:mm A")}</Text>
           </Right>
         </ListItem>
       )
