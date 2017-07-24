@@ -23,12 +23,19 @@ It is customizeable and some new feature will coming soon every week.
 
 ## Installation
 
-React Native
+React Native (Frontend)
 ```
 $ git clone https://github.com/radiegtya/BukanMessenger
 $ cd BukanMessenger
 $ npm install
 $ react-native run ios #or react-native run android
+```
+Meteor https://github.com/radiegtya/BukanMessengerBackend (Backend)
+```
+$ git clone https://github.com/radiegtya/BukanMessengerBackend
+$ cd BukanMessengerBackend
+$ meteor npm install
+$ meteor #run your meteor on http://localhost:3000
 ```
 
 ## Support Us :)
