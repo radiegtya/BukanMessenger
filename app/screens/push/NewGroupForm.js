@@ -14,7 +14,8 @@ export default class NewGroupForm extends Component{
   }
 
   static navigatorStyle = {
-    navBarHidden: true
+    navBarHidden: true,
+    tabBarHidden: true
   };
 
   _renderHeader(){
@@ -23,7 +24,7 @@ export default class NewGroupForm extends Component{
     return (
       <Header>
         <Left>
-          <TouchableOpacity onPress={()=>this.props.navigator.dismissModal()}>
+          <TouchableOpacity onPress={()=>this.props.navigator.pop()}>
             <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
           </TouchableOpacity>
         </Left>
@@ -44,14 +45,16 @@ export default class NewGroupForm extends Component{
     const {members} = this.props;
 
     if(validationCondition){
-      Meteor.call('chats.initGroup', name, members, (chatId)=>{
-        this.props.navigator.showModal({
-          screen: 'push.Messages',
-          passProps: {
-            chatId: chatId,
-            chatName: name
-          }
-        });
+      Meteor.call('chats.initGroup', name, members, (err, chatId)=>{
+        if(chatId){
+          this.props.navigator.push({
+            screen: 'push.Messages',
+            passProps: {
+              chatId: chatId,
+              chatName: name
+            }
+          });
+        }
       });
     }
   }

@@ -11,7 +11,7 @@ class Chat extends Component{
     const {chat, user, navigator} = this.props;
 
 
-    navigator.showModal({
+    navigator.push({
       screen: 'push.Messages',
       passProps: {
         chatId: chat._id,

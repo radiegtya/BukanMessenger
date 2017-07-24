@@ -13,7 +13,7 @@ class NewChat extends Component {
     return (
       <Header>
         <Left>
-          <TouchableOpacity onPress={()=>this.props.navigator.dismissModal()}>
+          <TouchableOpacity onPress={()=>this.props.navigator.pop()}>
             <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
           </TouchableOpacity>
         </Left>
@@ -42,7 +42,7 @@ class NewChat extends Component {
 
           {/* List */}
           <List>
-            <ListItem icon onPress={()=>this.props.navigator.showModal({screen: 'push.NewGroup'})}>
+            <ListItem icon onPress={()=>this.props.navigator.push({screen: 'push.NewGroup'})}>
               <Left>
                 <Icon name="contacts" style={{color: '#0C67D0'}}/>
               </Left>
@@ -84,7 +84,8 @@ export default class NewChatStateHolder extends Component {
   }
 
   static navigatorStyle = {
-    navBarHidden: true
+    navBarHidden: true,
+    tabBarHidden: true
   };
 
   render(){

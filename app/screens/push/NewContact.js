@@ -15,7 +15,8 @@ export default class NewContact extends Component{
   }
 
   static navigatorStyle = {
-    navBarHidden: true
+    navBarHidden: true,
+    tabBarHidden: true
   };
 
   _renderHeader(){
@@ -24,7 +25,7 @@ export default class NewContact extends Component{
     return (
       <Header>
         <Left>
-          <TouchableOpacity onPress={()=>this.props.navigator.dismissModal()}>
+          <TouchableOpacity onPress={()=>this.props.navigator.pop()}>
             <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
           </TouchableOpacity>
         </Left>
@@ -53,7 +54,7 @@ export default class NewContact extends Component{
           ]
         },(err)=>{
           if(!err){
-            this.props.navigator.dismissModal();
+            this.props.navigator.pop();
           }
         })
     }

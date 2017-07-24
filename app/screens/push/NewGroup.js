@@ -15,7 +15,7 @@ class NewGroup extends Component {
     return (
       <Header>
         <Left>
-          <TouchableOpacity onPress={()=>navigator.dismissModal()}>
+          <TouchableOpacity onPress={()=>navigator.pop()}>
             <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
           </TouchableOpacity>
         </Left>
@@ -82,7 +82,8 @@ export default class NewGroupStateHolder extends Component {
   }
 
   static navigatorStyle = {
-    navBarHidden: true
+    navBarHidden: true,
+    tabBarHidden: true
   };
 
   handleNext(){
@@ -95,7 +96,7 @@ export default class NewGroupStateHolder extends Component {
       members.push(user);
 
     if(members.length > 0){
-      this.props.navigator.showModal({
+      this.props.navigator.push({
         screen: 'push.NewGroupForm',
         passProps: {
           members: members

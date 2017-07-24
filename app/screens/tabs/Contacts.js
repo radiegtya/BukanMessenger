@@ -17,7 +17,7 @@ class Contacts extends Component {
           <Text>Contacts</Text>
         </Body>
         <Right>
-          <TouchableOpacity onPress={()=>this.props.navigator.showModal({screen: 'push.NewContact'})}>
+          <TouchableOpacity onPress={()=>this.props.navigator.push({screen: 'push.NewContact'})}>
             <Icon name="add" style={{color: '#4285f4', marginRight: 10}}/>
           </TouchableOpacity>
         </Right>

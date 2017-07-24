@@ -19,7 +19,7 @@ class Messages extends Component {
     return (
       <Header>
         <Left>
-          <TouchableOpacity onPress={()=>this.props.navigator.dismissAllModals()}>
+          <TouchableOpacity onPress={()=>this.props.navigator.popToRoot()}>
             <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
           </TouchableOpacity>
         </Left>
@@ -87,13 +87,14 @@ const MessagesContainer = createContainer((props)=>{
 
   return {
     user: MO.user(),
-    messages: messages.length > 0 ? messages.reverse(): []
+    messages: messages
   }
 
 }, Messages);
 
 MessagesContainer.navigatorStyle = {
-  navBarHidden: true
+  navBarHidden: true,
+  tabBarHidden: true
 };
 
 export default MessagesContainer;

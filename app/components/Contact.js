@@ -12,7 +12,7 @@ class Contact extends Component{
 
     Meteor.call('chats.initPrivate', user, contact.user, (err, chatId)=>{
       if(chatId){
-        navigator.showModal({
+        navigator.push({
           screen: 'push.Messages',
           passProps: {
             chatId: chatId,
