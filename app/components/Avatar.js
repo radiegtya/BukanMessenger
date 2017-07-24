@@ -4,6 +4,19 @@ import {Thumbnail} from 'native-base';
 
 export default class Avatar extends Component{
 
+  stringToRGB(str){
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+       hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    var c = (hash & 0x00FFFFFF)
+        .toString(16)
+        .toUpperCase();
+
+    return "#"+ "00000".substring(0, 6 - c.length) + c;
+  }
+
   render(){
     const {text, uri, small} = this.props;
 
@@ -18,7 +31,7 @@ export default class Avatar extends Component{
       if(initial.length > 1)
         initial = initial[0].charAt(0).toUpperCase() + initial[1].charAt(0).toUpperCase();
       else
-        initial = initial[0].charAt(0).toUpperCase();
+        initial = text.charAt(0).toUpperCase() + text.charAt(1).toUpperCase();
 
       //set small style if user set small to true
       let contentStyle = styles.content;
@@ -28,9 +41,12 @@ export default class Avatar extends Component{
         textStyle = styles.textSmall;
       }
 
+      //get backgroundColor basedOn props.text
+      const backgroundColor = this.stringToRGB(text);
+
       return (
         <View style={styles.container}>
-          <View style={[contentStyle]}>
+          <View style={[contentStyle, {backgroundColor: backgroundColor}]}>
             <Text style={[textStyle]}>{initial}</Text>
           </View>
         </View>

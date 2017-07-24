@@ -53,8 +53,8 @@ class Settings extends Component {
             <ListItem avatar style={{marginTop: 10}}>
               <Left>
                 <Avatar
-                  //uri="https://bootdey.com/img/Content/avatar/avatar6.png"
-                  text="Ega radiegtya"
+                  uri={user.profile.picture? user.profile.picture: null}
+                  text={user.profile.picture? null: name}
                 />
               </Left>
               {!turnOnEdit?

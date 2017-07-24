@@ -3,6 +3,7 @@ import {Text, ListItem, Left, Thumbnail, Body, Right} from 'native-base';
 import {TouchableOpacity} from 'react-native';
 import Meteor, {createContainer} from 'react-native-meteor';
 import {MO} from '../MO';
+import Avatar from './Avatar';
 
 class Contact extends Component{
 
@@ -10,13 +11,15 @@ class Contact extends Component{
     const {contact, user, navigator} = this.props;
 
     Meteor.call('chats.initPrivate', user, contact.user, (err, chatId)=>{
-      navigator.showModal({
-        screen: 'push.Messages',
-        passProps: {
-          chatId: chatId,
-          chatName: contact.user.profile.firstName + ' ' + contact.user.profile.lastName
-        },
-      });
+      if(chatId){
+        navigator.showModal({
+          screen: 'push.Messages',
+          passProps: {
+            chatId: chatId,
+            chatName: contact.user.profile.firstName + ' ' + contact.user.profile.lastName
+          },
+        });
+      }
     });
 
   }
@@ -24,14 +27,19 @@ class Contact extends Component{
   render(){
       const {key, contact} = this.props;
       const {user} = contact;
+      const name = user.profile.firstName + " " + user.profile.lastName;
 
       return (
         <ListItem avatar key={key} onPress={()=>this.handleNewChat()}>
             <Left>
-              <Thumbnail small source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+            <Avatar
+              uri={user.profile.picture? user.profile.picture: null}
+              text={user.profile.picture? null: name}
+              small={true}
+            />
             </Left>
             <Body>
-              <Text>{user.profile.firstName + " " + user.profile.lastName}</Text>
+              <Text>{name}</Text>
             </Body>
             <Right/>
         </ListItem>

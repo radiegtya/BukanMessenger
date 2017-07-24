@@ -3,6 +3,7 @@ import {Text, ListItem, Left, Thumbnail, Body, Right} from 'native-base';
 import Meteor, {createContainer} from 'react-native-meteor';
 import moment from 'moment';
 import {MO} from '../MO';
+import Avatar from './Avatar';
 
 class Chat extends Component{
 
@@ -34,7 +35,10 @@ class Chat extends Component{
       return (
         <ListItem avatar key={key} onPress={()=>this.handleGoToMessages(chatName)}>
           <Left>
-            <Thumbnail source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+            <Avatar
+              uri={user.profile.picture? user.profile.picture: null}
+              text={user.profile.picture? null: chatName}
+            />
           </Left>
           <Body>
             <Text>{chatName}</Text>
