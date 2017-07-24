@@ -4,6 +4,7 @@ import Meteor, {createContainer} from 'react-native-meteor';
 import {MO} from '../../MO';
 import {Container, Content, View, Header, Left, Body, Right, Text, Icon} from 'native-base';
 import {TouchableOpacity} from 'react-native';
+import Avatar from '../../components/Avatar';
 
 class Messages extends Component {
 
@@ -14,21 +15,43 @@ class Messages extends Component {
   }
 
   _renderHeader(){
-    const {chatName} = this.props;
+    const {chatName, user, toUser} = this.props;
+    let avatarUri = null;
+    //if obj.toUser exists, thats mean chat type == private
+    if(toUser)
+      avatarUri = toUser.profile.picture? toUser.profile.picture: null;
 
     return (
       <Header>
         <Left>
           <TouchableOpacity onPress={()=>this.props.navigator.popToRoot()}>
-            <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
+            <Icon name="arrow-back" style={{color: '#4285f4'}}/>
           </TouchableOpacity>
         </Left>
         <Body>
           <Text>{chatName}</Text>
         </Body>
-        <Right/>
+        <Right>
+          <TouchableOpacity onPress={()=>this.handleChatInfo()}>
+            <Avatar
+              uri={avatarUri? avatarUri: null}
+              text={avatarUri? null: chatName}
+              small={true}
+            />
+          </TouchableOpacity>
+        </Right>
       </Header>
     )
+  }
+
+  //go to chatInfo screen
+  handleChatInfo(){
+    this.props.navigator.push({
+      screen: 'push.ChatInfo',
+      passProps: {
+        ...this.props
+      }
+    });
   }
 
   onSend(messages = []) {

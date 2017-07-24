@@ -16,7 +16,7 @@ class NewGroup extends Component {
       <Header>
         <Left>
           <TouchableOpacity onPress={()=>navigator.pop()}>
-            <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
+            <Icon name="arrow-back" style={{color: '#4285f4'}}/>
           </TouchableOpacity>
         </Left>
         <Body>

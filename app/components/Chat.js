@@ -8,14 +8,15 @@ import Avatar from './Avatar';
 class Chat extends Component{
 
   handleGoToMessages(chatName){
-    const {chat, user, navigator} = this.props;
+    const {chat, user, navigator, toUser} = this.props;
 
 
     navigator.push({
       screen: 'push.Messages',
       passProps: {
         chatId: chat._id,
-        chatName: chatName
+        chatName: chatName,
+        toUser: toUser
       },
     })
   }
@@ -25,19 +26,25 @@ class Chat extends Component{
 
       //use default chat.name if type==public, else type==private use username (members) who is not currentLoggedInUser
       let chatName = chat.name;
+      let toUser = null;
+      let avatarUri = null;
       if(chat.type == "private" && chat.members){
-        if(chat.members[0]._id != user._id)
+        if(chat.members[0]._id != user._id){
           chatName = chat.members[0].profile.firstName + " " + chat.members[0].profile.lastName;
-        else
+          toUser = chat.members[0];
+        }else{
           chatName = chat.members[1].profile.firstName + " " + chat.members[1].profile.lastName;
+          toUser = chat.members[1];
+        }
+        avatarUri = toUser.profile.picture? toUser.profile.picture: null;
       }
 
       return (
-        <ListItem avatar key={key} onPress={()=>this.handleGoToMessages(chatName)}>
+        <ListItem avatar key={key} onPress={()=>this.handleGoToMessages(chatName, toUser)}>
           <Left>
             <Avatar
-              uri={user.profile.picture? user.profile.picture: null}
-              text={user.profile.picture? null: chatName}
+              uri={avatarUri? avatarUri: null}
+              text={avatarUri? null: chatName}
             />
           </Left>
           <Body>

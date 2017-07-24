@@ -26,7 +26,7 @@ export default class NewContact extends Component{
       <Header>
         <Left>
           <TouchableOpacity onPress={()=>this.props.navigator.pop()}>
-            <Icon name="arrow-back" style={{color: '#4285f4', marginLeft: 10}}/>
+            <Icon name="arrow-back" style={{color: '#4285f4'}}/>
           </TouchableOpacity>
         </Left>
         <Body>

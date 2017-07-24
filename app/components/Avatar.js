@@ -45,10 +45,8 @@ export default class Avatar extends Component{
       const backgroundColor = this.stringToRGB(text);
 
       return (
-        <View style={styles.container}>
-          <View style={[contentStyle, {backgroundColor: backgroundColor}]}>
-            <Text style={[textStyle]}>{initial}</Text>
-          </View>
+        <View style={[contentStyle, {backgroundColor: backgroundColor}]}>
+          <Text style={[textStyle]}>{initial}</Text>
         </View>
       );
     }
@@ -63,9 +61,6 @@ Avatar.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center'
-  },
   content: {
     alignItems: 'center',
     backgroundColor: 'blue',
@@ -76,7 +71,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#FFF',
-    fontSize: 22,
+    fontSize: 20,
     textAlign: 'center'
   },
   contentSmall: {

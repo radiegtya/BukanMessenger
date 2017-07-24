@@ -16,7 +16,8 @@ class Contact extends Component{
           screen: 'push.Messages',
           passProps: {
             chatId: chatId,
-            chatName: contact.user.profile.firstName + ' ' + contact.user.profile.lastName
+            chatName: contact.user.profile.firstName + ' ' + contact.user.profile.lastName,
+            toUser: contact.user
           },
         });
       }
