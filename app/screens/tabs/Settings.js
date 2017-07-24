@@ -4,6 +4,7 @@ import {Container, Content, Header, Left, Body, Right, Text, Title, ListItem, Li
 import Meteor, {createContainer} from 'react-native-meteor';
 import {MO} from '../../MO';
 import {startSingleScreenApp} from '../index';
+import Avatar from '../../components/Avatar';
 
 class Settings extends Component {
 
@@ -49,9 +50,12 @@ class Settings extends Component {
         <Content>
           {/* Profile */}
           <List>
-            <ListItem avatar>
+            <ListItem avatar style={{marginTop: 10}}>
               <Left>
-                <Thumbnail small source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+                <Avatar
+                  //uri="https://bootdey.com/img/Content/avatar/avatar6.png"
+                  text="Ega radiegtya"
+                />
               </Left>
               {!turnOnEdit?
                 (
@@ -89,7 +93,7 @@ class Settings extends Component {
             {/* FAQ */}
             <ListItem>
               <Left>
-                <Text>BukanChat FAQ</Text>
+                <Text>FAQ</Text>
               </Left>
               <Body/>
               <Right>
