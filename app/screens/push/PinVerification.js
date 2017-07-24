@@ -44,7 +44,7 @@ export default class PinVerification extends Component {
   componentDidMount(){
     //for now use alert to get PIN, comment code below on production!
     const {pin, phoneNumber} = this.props;
-    alert(pin);
+    alert("This is for DEMO purpose.\n Remove in production!\n\n Your PIN: " + pin);
     //comment end
   }
 

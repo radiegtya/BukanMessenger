@@ -49,8 +49,11 @@ export default class SignIn extends Component {
       const {callingCode, phoneNo} = this.state;
       const phoneNumber = "+" + callingCode + phoneNo;
 
-      //here you can send the pin via sms using twilio/nexmmo or other service you prefered
+      //here you can send the pin via sms using twilio/nexmo or other service you prefered
       // ** //
+
+      //then set networkRequestStarted to networkRequestCompleted
+      this.networkRequestCompleted();
 
       //redirect to PinVerification page
       this.props.navigator.push({
@@ -72,7 +75,7 @@ export default class SignIn extends Component {
 
    render() {
       return (
-         <View style= {{marginTop:64}}>
+         <View style= {{marginTop:10}}>
            <Text style={styles.infoMsg}>
               We will send a SMS to verify your phone number. Enter your country code and phone number.
            </Text>

@@ -73,7 +73,10 @@ export default class NewContact extends Component{
               <Input placeholder="Last Name" onChangeText={(text) => this.setState({lastName: text})}/>
             </Item>
             <Item inlineLabel>
-              <Input placeholder="Mobile Number" onChangeText={(text) => this.setState({mobileNumber: text})}/>
+              <Input placeholder="Mobile Number"
+                keyboardType="phone-pad"
+                onChangeText={(text) => this.setState({mobileNumber: text})}
+              />
             </Item>
           </Form>
         </Content>
