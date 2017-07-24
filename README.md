@@ -14,7 +14,7 @@ BukanMessenger is a Messenger app build on top React Native and Meteor Js.
 It is customizeable and some new feature will coming soon every week.
 
 
-<img src="./demo.gif?raw=true" width="300">&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/radiegtya/BukanMessenger/blob/master/demo.gif?raw=true" width="300">&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## Why BukanMessenger?
 * It's React Native, so it support android & iOS by default!
