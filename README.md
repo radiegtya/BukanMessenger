@@ -5,8 +5,8 @@
 
 ## Important
 This project is still on very early development stage. If you want to use for production, use it with your own risk.
-<br><br>More feature Coming Really Soon.
-<br>You are not recommended to give pull request for now, although You can fork this anytime.
+<br>More feature Coming Really Soon.
+<br>You are not recommended to give pull request for now, although You can fork this anytime. (Except You had contact me before and have fully understanding on this project.
 
 ## BukanMessenger
 
@@ -23,14 +23,14 @@ It is customizeable and some new feature will coming soon every week.
 
 ## Installation
 
-React Native (Frontend)
+React Native (Front-end)
 ```
 $ git clone https://github.com/radiegtya/BukanMessenger
 $ cd BukanMessenger
 $ npm install
 $ react-native run ios #or react-native run android
 ```
-Meteor https://github.com/radiegtya/BukanMessengerBackend (Backend)
+Meteor https://github.com/radiegtya/BukanMessengerBackend (Back-end)
 ```
 $ git clone https://github.com/radiegtya/BukanMessengerBackend
 $ cd BukanMessengerBackend
@@ -43,6 +43,67 @@ $ meteor #run your meteor on http://localhost:3000
 * We are Ready to give Training to You/Your company to use/modify BukanMessenger. 
 * Buy our screencast about the basic development of BukanMessenger (COMING SOON)
 * Like our facebook page https://www.facebook.com/ega.sdr
+
+## Roadmap
+
+Status Note:
+* Done ✅: already done completely
+* Contribute : We need Your help to contribute
+* Contribute ✅: its already done but need improvement and your contribution
+
+### SignIn Module
+
+|    Feature         | Status  |
+|--------------------|-----|
+| Phone Verification |  Done ✅    |
+| SMS to Requester   |  Contribute   |
+
+### Contacts Module
+
+|    Feature         | Status  |
+|--------------------|-----|
+| Contact List  |  Done ✅    |
+| Merge with native Contact   |  Contribute ✅  |
+| New Contact  |  Done ✅    |
+| Search Contact  |  Done ✅    |
+
+### Chats Module
+
+|    Feature         | Status  |
+|--------------------|-----|
+| Chat List |  Done ✅    |
+| Search Chat   |  Contribute ✅   |
+| New Chat |  Done ✅    |
+| New Group |  Done ✅    |
+
+### Messages Module
+
+|    Feature         | Status  |
+|--------------------|-----|
+| Messages List |  Done ✅    |
+| Send/Receive Message |  Done ✅    |
+| Edit Message |  Contribute   |
+| Reply Message |  Contribute   |
+| Delete Message |  Contribute   |
+| Forward Message |  Contribute   |
+| Info Message |  Contribute   |
+| Push Notification |  Contribute   |
+| Messages Detail & Members |  Done ✅   |
+| Date Separator |  Done ✅   |
+| Image Upload & Camera Upload |  Contribute   |
+| Video Upload |  Contribute   |
+| Video Call |  Contribute   |
+| Location Share |  Contribute   |
+
+### Settings Module
+
+|    Feature         | Status  |
+|--------------------|-----|
+| Update Profile |  Done ✅    |
+| FAQ |  Contribute ✅    |
+| Contact Us |  Contribute ✅    |
+| Set Profile Picture |  Contribute    |
+| Sign Out |  Done ✅    |
 
 ## Contact us
 Contact us for more detail 
