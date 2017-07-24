@@ -13,6 +13,8 @@ import Messages from './push/Messages';
 import NewChat from './push/NewChat';
 import NewGroup from './push/NewGroup';
 import NewGroupForm from './push/NewGroupForm';
+import ContactUs from './push/ContactUs';
+import Faq from './push/Faq';
 
 export function registerScreens(){
   //tabs
@@ -28,6 +30,8 @@ export function registerScreens(){
   Navigation.registerComponent('push.NewChat', ()=> NewChat);
   Navigation.registerComponent('push.NewGroup', ()=> NewGroup);
   Navigation.registerComponent('push.NewGroupForm', ()=> NewGroupForm);
+  Navigation.registerComponent('push.ContactUs', ()=> ContactUs);
+  Navigation.registerComponent('push.Faq', ()=> Faq);
 }
 
 export function startSingleScreenApp(){

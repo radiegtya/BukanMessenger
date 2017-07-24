@@ -91,7 +91,7 @@ class Settings extends Component {
           <List>
 
             {/* FAQ */}
-            <ListItem>
+            <ListItem onPress={()=>this.props.navigator.push({screen:'push.Faq'})}>
               <Left>
                 <Text>FAQ</Text>
               </Left>
@@ -103,7 +103,7 @@ class Settings extends Component {
             {/* FAQ End */}
 
             {/* Contact us */}
-            <ListItem>
+            <ListItem onPress={()=>this.props.navigator.push({screen:'push.ContactUs'})}>
               <Left>
                 <Text>Contact us</Text>
               </Left>
