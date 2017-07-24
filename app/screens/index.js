@@ -50,6 +50,8 @@ export function startTabBasedApp(){
         label: 'Contacts',
         screen: 'tabs.Contacts', // this is a registered name for a screen
         title: 'Contacts',
+        icon: require('../img/contacts-inactive.png'),
+        selectedIcon: require('../img/contacts-active.png'), // iOS only
         navigatorStyle: {
           navBarHidden: true
         }
@@ -58,6 +60,8 @@ export function startTabBasedApp(){
         label: 'Chats',
         screen: 'tabs.Chats',
         title: 'Chats',
+        icon: require('../img/chats-inactive.png'),
+        selectedIcon: require('../img/chats-active.png'), // iOS only
         navigatorStyle: {
           navBarHidden: true
         }
@@ -66,6 +70,8 @@ export function startTabBasedApp(){
         label: 'Settings',
         screen: 'tabs.Settings',
         title: 'Settings',
+        icon: require('../img/settings-inactive.png'),
+        selectedIcon: require('../img/settings-active.png'), // iOS only
         navigatorStyle: {
           navBarHidden: true
         }
