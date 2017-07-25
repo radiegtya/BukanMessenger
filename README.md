@@ -6,7 +6,6 @@
 ## Important
 This project is still on very early development stage. If you want to use for production, use it with your own risk.
 <br>More feature Coming Really Soon.
-<br>You are not recommended to give pull request for now, although You can fork this anytime. (Except You had contact me before and have fully understanding on this project.
 
 ## BukanMessenger
 BukanMessenger is a Messenger app build on top React Native and Meteor Js. 
