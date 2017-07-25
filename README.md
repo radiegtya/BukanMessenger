@@ -25,7 +25,7 @@ It is customizeable and some new feature will coming soon every week.
 * And ofc React Native https://facebook.github.io/react-native/
 * Don’t forget Meteor Js as the backend https://www.meteor.com/
 
-## Installation
+## Installation & Configuration
 React Native https://github.com/radiegtya/BukanMessenger (Front-end)
 ```
 $ git clone https://github.com/radiegtya/BukanMessenger
@@ -39,6 +39,11 @@ $ git clone https://github.com/radiegtya/BukanMessengerBackend
 $ cd BukanMessengerBackend
 $ meteor npm install
 $ meteor #run your meteor on http://localhost:3000
+```
+
+Open “app/Config.js”, and set the meteorUri variable as your Meteor server run at
+```javascript
+export const meteorUri = ‘ws://localhost:3000/websocket’;
 ```
 
 ## Support Us :)
