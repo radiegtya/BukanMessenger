@@ -9,7 +9,6 @@ This project is still on very early development stage. If you want to use for pr
 <br>You are not recommended to give pull request for now, although You can fork this anytime. (Except You had contact me before and have fully understanding on this project.
 
 ## BukanMessenger
-
 BukanMessenger is a Messenger app build on top React Native and Meteor Js. 
 It is customizeable and some new feature will coming soon every week.
 
@@ -22,14 +21,18 @@ It is customizeable and some new feature will coming soon every week.
 * Simple Code, so you can easily contribute on it.
 * Meteor is one of the most starred javascript framework, and it is very easy to use
 
-## Installation
+## Prerequisites
+* Make sure You had been install NodeJs in your system https://nodejs.org/en/
+* And ofc React Native https://facebook.github.io/react-native/
+* Don’t forget Meteor Js as the backend https://www.meteor.com/
 
-React Native (Front-end)
+## Installation
+React Native https://github.com/radiegtya/BukanMessenger (Front-end)
 ```
 $ git clone https://github.com/radiegtya/BukanMessenger
 $ cd BukanMessenger
 $ npm install
-$ react-native run ios #or react-native run android
+$ react-native run-ios #or react-native run-android
 ```
 Meteor https://github.com/radiegtya/BukanMessengerBackend (Back-end)
 ```
